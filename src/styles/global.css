@@ -165,6 +165,20 @@
   50% { opacity: 0.32; }
 }
 
+@keyframes ambient-drift {
+  0% { background-position: 0 0, 70px 70px; }
+  50% { background-position: 40px 20px, 90px 110px; }
+  100% { background-position: 0 0, 70px 70px; }
+}
+@keyframes stars-shimmer {
+  0%, 100% { opacity: 0.05; }
+  50% { opacity: 0.09; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-ambient, .site-stars { animation: none !important; }
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .neon-flicker, .hero-sweep, .hero-beams::before, .hero-beams::after, .hero-particles { animation: none !important; }
@@ -270,6 +284,54 @@
   @keyframes ring-rotate {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+  }
+
+  /* Site-wide ambient neon overlays */
+  .site-glow-top,
+  .site-glow-bottom,
+  .site-ambient,
+  .site-stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .site-glow-top {
+    background: radial-gradient(800px 400px at 50% -5%, rgba(124,58,237,0.18), transparent 60%),
+                radial-gradient(600px 300px at 15% 0%, rgba(236,72,153,0.12), transparent 65%);
+    mix-blend-mode: screen;
+  }
+  .site-glow-bottom {
+    background: radial-gradient(800px 400px at 50% 105%, rgba(34,211,238,0.16), transparent 60%),
+                radial-gradient(600px 300px at 85% 100%, rgba(253,224,71,0.12), transparent 65%);
+    mix-blend-mode: screen;
+  }
+
+  .site-ambient {
+    background-image:
+      radial-gradient(rgba(236,72,153,0.12) 1px, transparent 1px),
+      radial-gradient(rgba(34,211,238,0.10) 1px, transparent 1px);
+    background-size: 140px 140px, 200px 200px;
+    background-position: 0 0, 70px 70px;
+    animation: ambient-drift 60s linear infinite;
+    opacity: 0.35;
+  }
+
+  .site-stars {
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 2px 2px;
+    background-repeat: repeat;
+    background-position: 0 0;
+    opacity: 0.06;
+    animation: stars-shimmer 14s ease-in-out infinite;
+  }
+
+  /* Softer neon for subheadings */
+  .neon-title-soft {
+    text-shadow:
+      0 0 4px rgba(236, 72, 153, 0.35),
+      0 0 10px rgba(124, 58, 237, 0.25);
   }
 }
 

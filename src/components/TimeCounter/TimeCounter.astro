@@ -1,0 +1,56 @@
+---
+const {
+  id = "countdown",
+  title = "Contador",
+  date = "2024-12-31T23:59:59",
+} = Astro.props;
+---
+
+<section class="py-20 bg-black text-white">
+  <div class="container mx-auto text-center">
+    <h2 class="text-5xl font-blanka text-purple-500">{title}</h2>
+    <div id={id} class="text-4xl font-schibsted mt-10 grid grid-cols-4 gap-4">
+      <div>
+        <span id={`${id}-days`}></span>
+        <div class="text-sm">Días</div>
+      </div>
+      <div>
+        <span id={`${id}-hours`}></span>
+        <div class="text-sm">Horas</div>
+      </div>
+      <div>
+        <span id={`${id}-minutes`}></span>
+        <div class="text-sm">Minutos</div>
+      </div>
+      <div>
+        <span id={`${id}-seconds`}></span>
+        <div class="text-sm">Segundos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ date, id }}>
+  const countDownDate = new Date(date).getTime();
+
+  const x = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById(`${id}-days`).innerHTML = days;
+    document.getElementById(`${id}-hours`).innerHTML = hours;
+    document.getElementById(`${id}-minutes`).innerHTML = minutes;
+    document.getElementById(`${id}-seconds`).innerHTML = seconds;
+
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById(id).innerHTML = "EXPIRED";
+    }
+  }, 1000);
+</script>
+

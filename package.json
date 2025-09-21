@@ -1,7 +1,8 @@
 {
-  "name": "",
+  "name": "mi-kumple",
   "type": "module",
   "version": "0.0.1",
+  "description": "Sitio de invitación con Astro y Tailwind, con cuenta regresiva.",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -9,6 +10,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.13.7"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "author": "Alejandro Prado",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
   }
 }

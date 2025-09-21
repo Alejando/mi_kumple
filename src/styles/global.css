@@ -205,6 +205,72 @@
     24% { opacity: 0.85; }
     81% { opacity: 0.9; }
   }
+
+  /* Neon chips/badges for highlighted info */
+  .chip-neon-pink {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full font-chakra uppercase tracking-wide;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(236, 72, 153, 0.12);
+    border: 1px solid rgba(236, 72, 153, 0.45);
+    box-shadow: 0 0 18px rgba(236, 72, 153, 0.18), inset 0 0 12px rgba(236,72,153,0.12);
+    backdrop-filter: blur(6px);
+  }
+  .chip-neon-pink::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: chip-sheen 4.5s ease-in-out infinite;
+  }
+  .chip-neon-cyan {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full font-chakra uppercase tracking-wide;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(34, 211, 238, 0.12);
+    border: 1px solid rgba(34, 211, 238, 0.45);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.18), inset 0 0 12px rgba(34,211,238,0.12);
+    backdrop-filter: blur(6px);
+  }
+  .chip-neon-cyan::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: chip-sheen 5.5s ease-in-out infinite;
+  }
+
+  /* Optional rotating ring border */
+  .chip-ring {
+    position: relative;
+  }
+  .chip-ring::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from 0deg, #fde047, #ec4899, #7c3aed, #22d3ee, #fde047);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: ring-rotate 10s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Keyframes for chip sheen and rotating ring */
+  @keyframes chip-sheen {
+    0% { transform: translateX(-120%); }
+    40% { transform: translateX(120%); }
+    100% { transform: translateX(120%); }
+  }
+  @keyframes ring-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
 
 /* Utility classes mirroring Tailwind naming for explicit usage */
@@ -221,4 +287,13 @@
   .heading-cartoon { @apply font-luckiest; }
   .subtitle-modern { @apply font-syncopate uppercase tracking-widest; }
   .display-secondary { @apply font-chakra; }
+
+  /* Neon gradient text */
+  .text-gradient-neon {
+    background: linear-gradient(90deg, #fde047, #ec4899, #7c3aed, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 12px rgba(236, 72, 153, 0.2);
+  }
 }

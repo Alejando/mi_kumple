@@ -13,6 +13,12 @@ module.exports = {
       },
       colors: {
         'deep-purple': '#1a1a2e',
+        // Ocean/ice palette aligned with public/background.png
+        'theme-deep': '#0b1733',
+        'theme-blue': '#2a5fbf',
+        'theme-cyan': '#2fd3e6',
+        'theme-lavender': '#aeb8ff',
+        'theme-spark': '#e3b7ff',
       },
     },
   },

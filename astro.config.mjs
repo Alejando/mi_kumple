@@ -13,12 +13,12 @@ export default defineConfig({
     server: {
       host: true,
       cors: true,
-      allowedHosts: ['f3cd6f536f21.ngrok-free.app'],
+      allowedHosts: ['012910788280.ngrok-free.app'],
     },
     preview: {
       host: true,
       cors: true,
-      allowedHosts: ['f3cd6f536f21.ngrok-free.app'],
+      allowedHosts: ['012910788280.ngrok-free.app'],
     },
   },
 });
